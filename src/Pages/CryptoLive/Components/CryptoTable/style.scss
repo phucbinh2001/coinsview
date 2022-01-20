@@ -1,0 +1,14 @@
+.tool {
+  & button {
+    display: flex;
+    align-items: center;
+
+    & ion-icon {
+      margin-right: 5px;
+    }
+  }
+
+  button.sort ion-icon {
+    margin-right: 0;
+  }
+}
