@@ -1,12 +1,15 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import logoDark from "../../logo-dark.svg";
 
 function Header() {
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <img src={logoDark} alt="" height={60} />
+          </Navbar.Brand>
         </Container>
       </Navbar>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

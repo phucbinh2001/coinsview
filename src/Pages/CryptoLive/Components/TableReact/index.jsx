@@ -15,18 +15,18 @@ function TableReact({ columns, data }) {
         <tr>
           <th colSpan={10}>
             <div className="d-flex justify-content-end tool">
-              <Button className="m-1" variant="secondary">
+              <Button className="m-1 btn-light" variant="secondary">
                 <ion-icon name="settings-outline"></ion-icon>
                 Customize
               </Button>
-              <Button className="m-1" variant="secondary">
+              <Button className="m-1 btn-light" variant="secondary">
                 <ion-icon name="copy-outline"></ion-icon> Categories
               </Button>
-              <Button className="m-1" variant="secondary">
+              <Button className="m-1 btn-light" variant="secondary">
                 <ion-icon name="repeat-outline"></ion-icon>
                 Exchanges
               </Button>
-              <Button className="m-1 sort" variant="secondary">
+              <Button className="m-1 btn-light sort" variant="secondary">
                 <ion-icon name="funnel-outline"></ion-icon>
               </Button>
             </div>

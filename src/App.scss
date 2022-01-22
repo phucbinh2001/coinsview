@@ -5,10 +5,31 @@ $theme-colors: (
   "secondary": orange,
   "success": green,
   "warning": brown,
-  "light": gray,
-  "dark": #333333,
+  "light": #20232d,
+  "dark": #17171a,
   "muted": crimson,
   "white": white,
 );
 
 @import "~bootstrap/scss/bootstrap";
+
+//Scrollbar custom
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #17171a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #262628;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #262628;
+}

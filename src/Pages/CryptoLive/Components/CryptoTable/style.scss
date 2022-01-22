@@ -2,6 +2,7 @@
   & button {
     display: flex;
     align-items: center;
+    background-color: rgb(50, 53, 70);
 
     & ion-icon {
       margin-right: 5px;
@@ -15,18 +16,29 @@
 
 .coin-code {
   font-weight: 700;
+  text-align: left;
 }
 
 .coin-name {
   font-size: 14px;
   color: #8699b8;
+  text-align: left;
 }
 
 .coin-avatar {
-  margin-right: 6px;
+  margin-right: 10px;
 }
 
 .table-dark {
   border-radius: 8px;
   overflow: hidden;
+  text-align: right;
+
+  & th:first-child {
+    text-align: center;
+  }
+
+  & th:nth-child(2) {
+    text-align: left;
+  }
 }

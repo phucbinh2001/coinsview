@@ -67,6 +67,13 @@ function CryptoTable() {
 
   const columns = [
     {
+      Header: "#",
+      // accessor: (d) => `<img src=${d.webp32} /> ${d.name} ${d.code}`,
+      Cell: (row) => {
+        return <div className="text-center">{row.row.index + 1}</div>;
+      },
+    },
+    {
       Header: "Coin",
       // accessor: (d) => `<img src=${d.webp32} /> ${d.name} ${d.code}`,
       Cell: (row) => {
@@ -82,7 +89,6 @@ function CryptoTable() {
             <div>
               <p className="coin-code mb-0"> {row.cell.row.original.code}</p>
               <p className="coin-name text-mute mb-0">
-                {" "}
                 {row.cell.row.original.name}
               </p>
             </div>
@@ -100,11 +106,7 @@ function CryptoTable() {
       Header: "Market Cap",
       Cell: (row) => {
         return (
-          <>
-            {"$" + nFormatter(parseFloat(row.cell.row.original.cap, 1))}
-            <br />
-            {row.cell.row.original.cap}
-          </>
+          <>{"$" + nFormatter(parseFloat(row.cell.row.original.cap, 1))}</>
         );
       },
     },
@@ -115,24 +117,23 @@ function CryptoTable() {
           <>
             {"$" + nFormatter(parseFloat(row.cell.row.original.volume, 1))}
             <br />
-            {row.cell.row.original.volume}
           </>
         );
       },
     },
-    {
-      Header: "Liquidity",
-      Cell: (row) => {
-        return (
-          <>
-            {"$" + nFormatter(parseFloat(row.cell.row.original.pairs, 1))}
-            <br />
-            {row.cell.row.original.pairs}
-          </>
-        );
-      },
-      // accessor: "pairs",
-    },
+    // {
+    //   Header: "Liquidity",
+    //   Cell: (row) => {
+    //     return (
+    //       <>
+    //         {"$" + nFormatter(parseFloat(row.cell.row.original.pairs, 1))}
+    //         <br />
+    //         {row.cell.row.original.pairs}
+    //       </>
+    //     );
+    //   },
+    //   // accessor: "pairs",
+    // },
     {
       Header: "All-time High",
 
