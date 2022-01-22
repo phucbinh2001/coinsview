@@ -71,7 +71,7 @@ function Footer() {
             {/* Grid column */}
             {/* Grid column */}
             <div className="col-md-3 col-lg-4 col-xl-4 mx-auto mb-4">
-              <img src={imgFooter} alt="" height={300} />
+              <img src={imgFooter} alt="" height={300} className="footer-img" />
             </div>
             {/* Grid column */}
             {/* Grid column */}

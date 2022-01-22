@@ -41,4 +41,17 @@
   & th:nth-child(2) {
     text-align: left;
   }
+
+  & .m-absolute {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0; /* required */
+    width: 5em;
+    left: -50px;
+    // top: auto;
+    border-top-width: 1px;
+    /*only relevant for first row*/
+    margin-top: -1px;
+    /*compensate for top border*/
+  }
 }
