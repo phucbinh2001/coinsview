@@ -8,7 +8,7 @@ function Footer() {
     <footer className="text-center text-lg-start bg-dark text-muted">
       {/* Section: Social media */}
       <section className="d-flex   border-bottom ">
-        <div className="container justify-content-center justify-content-lg-between p-4 d-flex">
+        <div className="container justify-content-center justify-content-lg-between pt-4 pb-4 d-flex">
           {/* Left */}
           <div className="me-5 d-none d-lg-block">
             <span>Get connected with us on social networks:</span>
@@ -70,7 +70,7 @@ function Footer() {
             </div>
             {/* Grid column */}
             {/* Grid column */}
-            <div className="col-md-3 col-lg-4 col-xl-4 mx-auto mb-4">
+            <div className="col-md-3 col-lg-4 col-xl-4 mb-4">
               <img src={imgFooter} alt="" height={300} className="footer-img" />
             </div>
             {/* Grid column */}

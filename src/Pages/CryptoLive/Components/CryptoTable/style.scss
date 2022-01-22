@@ -54,4 +54,21 @@
     margin-top: -1px;
     /*compensate for top border*/
   }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .form-select {
+    width: fit-content;
+    background: #20232d;
+    color: #fff;
+    border: #20232d;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    padding: 0 15px;
+    cursor: pointer;
+  }
 }
