@@ -30,15 +30,15 @@ function CryptoTable() {
       setcoinList(data);
     });
 
-    // const interval = setInterval(
-    //   () =>
-    //     fetchCoinList().then((data) => {
-    //       setcoinList(data);
-    //     }),
-    //   10000
-    // );
+    const interval = setInterval(
+      () =>
+        fetchCoinList().then((data) => {
+          setcoinList(data);
+        }),
+      1000
+    );
     return () => {
-      // clearInterval(interval);
+      clearInterval(interval);
     };
   }, []);
 

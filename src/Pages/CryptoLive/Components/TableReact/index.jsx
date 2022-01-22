@@ -25,7 +25,8 @@ function TableReact({ columns, data }) {
     {
       columns,
       data,
-      initialState: { pageIndex: 0 },
+      initialState: { pageIndex: 0, pageSize: 50 },
+      autoResetPage: false,
     },
     usePagination
   );
@@ -135,7 +136,7 @@ function TableReact({ columns, data }) {
                 >
                   {[10, 20, 30, 40, 50].map((pageSize) => (
                     <option key={pageSize} value={pageSize}>
-                      Coins {pageSize}
+                      {pageSize} Coins
                     </option>
                   ))}
                 </select>
