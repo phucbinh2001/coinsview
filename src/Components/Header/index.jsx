@@ -1,32 +1,37 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import logoDark from "../../logo-dark.svg";
+import "./style.scss";
 
 function Header() {
   return (
     <>
       <Navbar expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img src={logoDark} alt="" height={60} />
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#features">Crytocurrencies</Nav.Link>
-              <Nav.Link href="#pricing">Overview</Nav.Link>
-              <Nav.Link href="#pricing">Trending</Nav.Link>
-              <Nav.Link href="#pricing">Exchanges</Nav.Link>
-              <Nav.Link href="#pricing">Widgets</Nav.Link>
-              <Nav.Link href="#pricing">Widgets</Nav.Link>
-              <Nav.Link href="#pricing">Compare</Nav.Link>
-              <Nav.Link href="#pricing">Al</Nav.Link>
-              <Nav.Link href="#pricing">Blog</Nav.Link>
-              {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+        <Container style={{ display: "block" }}>
+          {" "}
+          <Row>
+            <Col xs={12} className="mobile-nav">
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar.Brand href="#home" style={{ width: "100%" }}>
+                  <img src={logoDark} alt="" height={60} />
+                </Navbar.Brand>
+              </Navbar>
+            </Col>
+
+            <Col xs={12}>
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link href="#features">Crytocurrencies</Nav.Link>
+                  <Nav.Link href="#pricing">Overview</Nav.Link>
+                  <Nav.Link href="#pricing">Trending</Nav.Link>
+                  <Nav.Link href="#pricing">Exchanges</Nav.Link>
+                  <Nav.Link href="#pricing">Widgets</Nav.Link>
+                  <Nav.Link href="#pricing">Widgets</Nav.Link>
+                  <Nav.Link href="#pricing">Compare</Nav.Link>
+                  <Nav.Link href="#pricing">Al</Nav.Link>
+                  <Nav.Link href="#pricing">Blog</Nav.Link>
+                  {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
@@ -39,13 +44,15 @@ function Header() {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown> */}
-            </Nav>
-            <Nav>
-              <Nav.Link eventKey={2} href="#memes">
-                Connect Wallet
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
+                </Nav>
+                <Nav>
+                  <Nav.Link eventKey={2} href="#memes">
+                    Connect Wallet
+                  </Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Col>
+          </Row>
         </Container>
       </Navbar>
     </>

@@ -1,0 +1,15 @@
+.navbar-toggler {
+  margin-left: 10px;
+  border: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-nav {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .navbar-brand img {
+    height: 50px;
+  }
+}
