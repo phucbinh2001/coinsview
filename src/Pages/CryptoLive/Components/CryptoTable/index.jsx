@@ -19,7 +19,7 @@ function CryptoTable() {
           sort: "rank",
           order: "ascending",
           offset: 0,
-          limit: 1000,
+          limit: 13848,
           meta: true,
         }),
       });
