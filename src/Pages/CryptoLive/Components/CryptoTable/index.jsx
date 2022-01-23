@@ -35,7 +35,7 @@ function CryptoTable() {
         fetchCoinList().then((data) => {
           setcoinList(data);
         }),
-      1000
+      10000
     );
     return () => {
       clearInterval(interval);
@@ -67,18 +67,14 @@ function CryptoTable() {
 
   const columns = [
     {
-      Header: "#",
-      // accessor: (d) => `<img src=${d.webp32} /> ${d.name} ${d.code}`,
-      Cell: (row) => {
-        return <div className="text-center">{row.row.index + 1}</div>;
-      },
-    },
-    {
       Header: "Coin",
+      sticky: "left",
       // accessor: (d) => `<img src=${d.webp32} /> ${d.name} ${d.code}`,
       Cell: (row) => {
         return (
           <div className="d-flex align-items-center">
+            <div className="stt">{row.row.index + 1}</div>
+
             <img
               className="coin-avatar"
               width={34}

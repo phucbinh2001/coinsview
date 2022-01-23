@@ -38,10 +38,6 @@
     text-align: center;
   }
 
-  & th:nth-child(2) {
-    text-align: left;
-  }
-
   & .m-absolute {
     position: sticky;
     position: -webkit-sticky;
@@ -77,13 +73,26 @@
   width: 100%;
   overflow-x: scroll;
 
-  table {
-    // table-layout: fixed;
-  }
-
   & th,
   td {
-    width: 100px;
     white-space: nowrap;
+  }
+
+  .stt {
+    width: max-content;
+    text-align: center;
+    margin-right: 20px;
+    border-right: 1px solid #4b4b4b;
+    height: 100%;
+    padding: 0 18px 0 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .stt {
+    display: none;
+  }
+
+  .CryptoLive {
+    padding: 0;
   }
 }

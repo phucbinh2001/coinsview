@@ -4,7 +4,7 @@ import CryptoTable from "./Components/CryptoTable";
 
 function CryptoLive() {
   return (
-    <Container className="">
+    <Container className="CryptoLive">
       <h2 className="text-center text-white">Cryptocurrency Prices Live</h2>
       <h3 className="text-center text-white mb-4">Top Coins by Market Cap</h3>
 
