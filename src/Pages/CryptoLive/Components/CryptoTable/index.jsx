@@ -61,8 +61,63 @@ function CryptoTable() {
         return num >= item.value;
       });
     return item
-      ? (num / item.value).toFixed(2).replace(rx, "$1") + " " + item.symbol
-      : "0";
+      ? "$" +
+          (num / item.value).toFixed(2).replace(rx, "$1") +
+          " " +
+          item.symbol
+      : "-";
+  };
+
+  //format volume
+  const volumeFormat = (num, digits) => {
+    const lookup = [
+      { value: 1, symbol: "" },
+      { value: 1e3, symbol: "K" },
+      { value: 1e6, symbol: "M" },
+      { value: 1e9, symbol: "B" },
+      // { value: 1e12, symbol: "T" },
+      // { value: 1e15, symbol: "P" },
+      // { value: 1e18, symbol: "E" },
+    ];
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    var item = lookup
+      .slice()
+      .reverse()
+      .find(function (item) {
+        return num >= item.value;
+      });
+    return item
+      ? "$" +
+          (num / item.value).toFixed(2).replace(rx, "$1") +
+          " " +
+          item.symbol
+      : "$0.000";
+  };
+
+  //format giá cho tất cả trường hợp
+  const FormatCoinPrice = (num, typeOfFormat) => {
+    switch (typeOfFormat) {
+      case "alltime":
+        if (num === null) {
+          return "-";
+        }
+        if (parseFloat(num) >= 1) {
+          return "$" + parseFloat(num).toFixed(2);
+        } else if (parseFloat(num) <= 0.00000001) {
+          return "$<0.00000001";
+        } else {
+          return "$" + parseFloat(num).toFixed(6);
+        }
+
+      default:
+        if (parseFloat(num) >= 1) {
+          return "$" + parseFloat(num).toFixed(2);
+        } else if (parseFloat(num) <= 0.00000001 || num === null) {
+          return "$<0.00000001";
+        } else {
+          return "$" + parseFloat(num).toFixed(6);
+        }
+    }
   };
 
   const columns = [
@@ -95,15 +150,13 @@ function CryptoTable() {
     {
       Header: "Price",
       Cell: (row) => {
-        return <>{"$" + parseFloat(row.cell.row.original.rate).toFixed(2)}</>;
+        return <>{FormatCoinPrice(row.cell.row.original.rate, "price")}</>;
       },
     },
     {
       Header: "Market Cap",
       Cell: (row) => {
-        return (
-          <>{"$" + nFormatter(parseFloat(row.cell.row.original.cap, 1))}</>
-        );
+        return <>{nFormatter(parseFloat(row.cell.row.original.cap, 1))}</>;
       },
     },
     {
@@ -111,7 +164,7 @@ function CryptoTable() {
       Cell: (row) => {
         return (
           <>
-            {"$" + nFormatter(parseFloat(row.cell.row.original.volume, 1))}
+            {volumeFormat(parseFloat(row.cell.row.original.volume, 1))}
             <br />
           </>
         );
@@ -136,7 +189,7 @@ function CryptoTable() {
       Cell: (row) => {
         return (
           <>
-            {"$" + parseFloat(row.cell.row.original.allTimeHighUSD).toFixed(2)}
+            {FormatCoinPrice(row.cell.row.original.allTimeHighUSD, "alltime")}
           </>
         );
       },
