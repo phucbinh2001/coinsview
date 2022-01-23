@@ -170,19 +170,7 @@ function CryptoTable() {
         );
       },
     },
-    // {
-    //   Header: "Liquidity",
-    //   Cell: (row) => {
-    //     return (
-    //       <>
-    //         {"$" + nFormatter(parseFloat(row.cell.row.original.pairs, 1))}
-    //         <br />
-    //         {row.cell.row.original.pairs}
-    //       </>
-    //     );
-    //   },
-    //   // accessor: "pairs",
-    // },
+
     {
       Header: "All-time High",
 
