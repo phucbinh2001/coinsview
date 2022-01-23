@@ -95,4 +95,29 @@
   .CryptoLive {
     padding: 0;
   }
+
+  .tool {
+    justify-content: start !important;
+  }
+
+  .tool button {
+    font-size: 0;
+    text-align: center;
+  }
+
+  .tool {
+    position: sticky;
+    height: max-content;
+    left: -1px;
+
+    & button {
+      font-size: 0;
+
+      & ion-icon {
+        margin-right: 0;
+        font-size: 20px;
+        padding: 5px 10px;
+      }
+    }
+  }
 }
