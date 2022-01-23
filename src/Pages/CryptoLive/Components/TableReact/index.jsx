@@ -32,7 +32,7 @@ function TableReact({ columns, data }) {
   );
 
   return (
-    <>
+    <div className="table-wrap">
       <Table striped bordered hover variant="dark" {...getTableProps()}>
         <thead>
           <tr>
@@ -145,7 +145,7 @@ function TableReact({ columns, data }) {
           </tr>
         </tbody>
       </Table>
-    </>
+    </div>
   );
 }
 

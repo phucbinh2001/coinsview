@@ -72,3 +72,18 @@
     cursor: pointer;
   }
 }
+
+.table-wrap {
+  width: 100%;
+  overflow-x: scroll;
+
+  table {
+    // table-layout: fixed;
+  }
+
+  & th,
+  td {
+    width: 100px;
+    white-space: nowrap;
+  }
+}
