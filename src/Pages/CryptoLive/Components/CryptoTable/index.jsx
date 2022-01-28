@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TableReact from "../TableReact";
-import DefaultColumnFilter from "../TableReact/DefaultColumnFilter";
 import "./style.scss";
 
 function CryptoTable() {
@@ -126,7 +125,6 @@ function CryptoTable() {
       Header: "Coin",
       sticky: "left",
       accessor: "name",
-      filter: "DefaultColumnFilter",
       // accessor: (d) => `<img src=${d.webp32} /> ${d.name} ${d.code}`,
       Cell: (row) => {
         return (

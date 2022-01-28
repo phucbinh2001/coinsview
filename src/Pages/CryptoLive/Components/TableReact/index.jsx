@@ -1,8 +1,14 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
-import { usePagination, useTable, useSortBy, useFilters } from "react-table";
+import {
+  useAsyncDebounce,
+  useFilters,
+  useGlobalFilter,
+  usePagination,
+  useSortBy,
+  useTable,
+} from "react-table";
 import { useSticky } from "react-table-sticky";
-import DefaultColumnFilter from "./DefaultColumnFilter";
 import styled from "styled-components";
 
 const Styles = styled.div`
@@ -18,16 +24,44 @@ const Styles = styled.div`
   }
 `;
 
+function GlobalFilter({
+  preGlobalFilteredRows,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const count = preGlobalFilteredRows.length;
+  const [value, setValue] = React.useState(globalFilter);
+  const onChange = useAsyncDebounce((value) => {
+    setGlobalFilter(value || undefined);
+  }, 200);
+
+  return (
+    <div className="search-box">
+      <ion-icon name="search-outline"></ion-icon>
+      <input
+        className="form-control"
+        value={value || ""}
+        onChange={(e) => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
+        placeholder={`${count} coins...`}
+        style={{
+          fontSize: "1.1rem",
+          border: "0",
+        }}
+      />
+    </div>
+  );
+}
+
 function TableReact({ columns, data }) {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -36,6 +70,9 @@ function TableReact({ columns, data }) {
     nextPage,
     previousPage,
     setPageSize,
+    preGlobalFilteredRows,
+    state,
+    setGlobalFilter,
     state: { pageIndex, pageSize },
   } = useTable(
     {
@@ -44,10 +81,11 @@ function TableReact({ columns, data }) {
       initialState: { pageIndex: 0, pageSize: 30 },
       autoResetPage: false,
       autoResetSortBy: false,
-      DefaultColumnFilter,
+      autoResetGlobalFilter: false,
     },
     useSticky,
     useFilters,
+    useGlobalFilter, // useGlobalFilter!
     useSortBy,
     usePagination
   );
@@ -66,18 +104,26 @@ function TableReact({ columns, data }) {
           <thead>
             <tr>
               <th colSpan={6}>
-                <div className="d-flex justify-content-end tool">
-                  <Button className="m-1 btn-light" variant="secondary">
-                    <ion-icon name="settings-outline"></ion-icon>
-                    Customize
-                  </Button>
-                  <Button className="m-1 btn-light" variant="secondary">
-                    <ion-icon name="copy-outline"></ion-icon> Categories
-                  </Button>
-                  <Button className="m-1 btn-light" variant="secondary">
-                    <ion-icon name="repeat-outline"></ion-icon>
-                    Exchanges
-                  </Button>
+                <div className="d-flex justify-content-between align-items-center tool">
+                  <GlobalFilter
+                    preGlobalFilteredRows={preGlobalFilteredRows}
+                    globalFilter={state.globalFilter}
+                    setGlobalFilter={setGlobalFilter}
+                  />
+                  <div className="d-flex">
+                    <Button className="m-1 btn-light" variant="secondary">
+                      <ion-icon name="settings-outline"></ion-icon>
+                      Customize
+                    </Button>
+                    <Button className="m-1 btn-light" variant="secondary">
+                      <ion-icon name="copy-outline"></ion-icon> Categories
+                    </Button>
+                    <Button className="m-1 btn-light" variant="secondary">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                      Exchanges
+                    </Button>
+                  </div>
+
                   {/* <Button className="m-1 btn-light sort" variant="secondary">
                     <ion-icon name="funnel-outline"></ion-icon>
                   </Button> */}
