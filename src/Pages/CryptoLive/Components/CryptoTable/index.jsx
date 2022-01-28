@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TableReact from "../TableReact";
+import DefaultColumnFilter from "../TableReact/DefaultColumnFilter";
 import "./style.scss";
 
 function CryptoTable() {
@@ -124,6 +125,8 @@ function CryptoTable() {
     {
       Header: "Coin",
       sticky: "left",
+      accessor: "name",
+      filter: "DefaultColumnFilter",
       // accessor: (d) => `<img src=${d.webp32} /> ${d.name} ${d.code}`,
       Cell: (row) => {
         return (
@@ -149,18 +152,21 @@ function CryptoTable() {
     },
     {
       Header: "Price",
+      accessor: "rate",
       Cell: (row) => {
         return <>{FormatCoinPrice(row.cell.row.original.rate, "price")}</>;
       },
     },
     {
       Header: "Market Cap",
+      accessor: "cap",
       Cell: (row) => {
         return <>{nFormatter(parseFloat(row.cell.row.original.cap, 1))}</>;
       },
     },
     {
       Header: "Volume 24h",
+      accessor: "volume",
       Cell: (row) => {
         return (
           <>
@@ -173,7 +179,7 @@ function CryptoTable() {
 
     {
       Header: "All-time High",
-
+      accessor: "allTimeHighUSD",
       Cell: (row) => {
         return (
           <>

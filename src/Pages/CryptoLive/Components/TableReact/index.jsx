@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
-import { usePagination, useTable } from "react-table";
+import { usePagination, useTable, useSortBy, useFilters } from "react-table";
 import { useSticky } from "react-table-sticky";
+import DefaultColumnFilter from "./DefaultColumnFilter";
 import styled from "styled-components";
 
 const Styles = styled.div`
@@ -42,9 +43,13 @@ function TableReact({ columns, data }) {
       data,
       initialState: { pageIndex: 0, pageSize: 30 },
       autoResetPage: false,
+      autoResetSortBy: false,
+      DefaultColumnFilter,
     },
-    usePagination,
-    useSticky
+    useSticky,
+    useFilters,
+    useSortBy,
+    usePagination
   );
 
   return (
@@ -73,17 +78,24 @@ function TableReact({ columns, data }) {
                     <ion-icon name="repeat-outline"></ion-icon>
                     Exchanges
                   </Button>
-                  <Button className="m-1 btn-light sort" variant="secondary">
+                  {/* <Button className="m-1 btn-light sort" variant="secondary">
                     <ion-icon name="funnel-outline"></ion-icon>
-                  </Button>
+                  </Button> */}
                 </div>
               </th>
             </tr>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                     {column.render("Header")}
+                    <span>
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? " 🔽"
+                          : " 🔼"
+                        : ""}
+                    </span>
                   </th>
                 ))}
               </tr>
