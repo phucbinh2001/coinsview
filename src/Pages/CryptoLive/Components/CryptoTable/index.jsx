@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import TableLoader from "../TableLoader";
 import TableReact from "../TableReact";
 import "./style.scss";
 
 function CryptoTable() {
   const [coinList, setcoinList] = useState([]);
+  const [loading, setloading] = useState();
 
   useEffect(() => {
     const fetchCoinList = async () => {
+      setloading(true);
       // Default options are marked with *
       const response = await fetch("https://api.livecoinwatch.com/coins/list", {
         method: "POST",
@@ -28,6 +31,7 @@ function CryptoTable() {
 
     fetchCoinList().then((data) => {
       setcoinList(data);
+      setloading(false);
     });
 
     const interval = setInterval(
@@ -192,7 +196,8 @@ function CryptoTable() {
 
   return (
     <>
-      <TableReact columns={columns} data={data} />
+      {/* {loading ? <TableLoader /> : <TableLoader />} */}
+      {loading ? <TableLoader /> : <TableReact columns={columns} data={data} />}
     </>
   );
 }
